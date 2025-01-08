@@ -4,10 +4,15 @@
  */
 package dish_diaries;
 
+import javafx.scene.Parent;
+
 /**
  *
  * @author HP
  */
-class string {
+public class scene {
+    scene(Parent root){
+        throw new UnsupportedOperationException("Not suppoted yet.");
+    }
     
 }
