@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="821.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dish_diaries.DashboardddController">
+   <children>
+      <ImageView fx:id="imgview" fitHeight="248.0" fitWidth="264.0" layoutX="13.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" />
+      <Label fx:id="showingdetails" alignment="TOP_CENTER" layoutX="294.0" layoutY="112.0" prefHeight="248.0" prefWidth="518.0" style="-fx-background-color: #F5F5F5;" />
+      <ListView fx:id="listview" layoutX="7.0" layoutY="370.0" prefHeight="226.0" prefWidth="226.0" />
+      <TextField fx:id="detailswrite" alignment="TOP_LEFT" layoutX="245.0" layoutY="371.0" prefHeight="76.0" prefWidth="569.0" promptText="Enter here details of Dishes" />
+      <Button fx:id="selectfile" layoutX="245.0" layoutY="458.0" mnemonicParsing="false" onAction="#uploadfile" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: #87CEEB;" text="Select a picture">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="Insert" layoutX="370.0" layoutY="459.0" mnemonicParsing="false" onAction="#Insertbtn" style="-fx-background-color: #D8BFD8;" text="Insert">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="update" layoutX="433.0" layoutY="458.0" mnemonicParsing="false" onAction="#updatebtn" style="-fx-background-color: #ADD8E6;" text="Update">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="delete" layoutX="502.0" layoutY="458.0" mnemonicParsing="false" onAction="#deletebtn" style="-fx-background-color: #CD5C5C;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <TextField fx:id="searchfield" layoutX="245.0" layoutY="512.0" prefHeight="41.0" prefWidth="150.0" promptText="Serach here" />
+      <Button fx:id="search" layoutX="245.0" layoutY="566.0" mnemonicParsing="false" onAction="#searchbtn" style="-fx-background-color: #FFB6C1;" text="Search">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="104.0" fitWidth="821.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/Purple%20Gradient%20Gaming%20Youtube%20Channel%20Art(1).png" />
+         </image>
+      </ImageView>
+      <Button fx:id="logout" layoutX="737.0" layoutY="553.0" mnemonicParsing="false" onAction="#logoutbtn" style="-fx-background-color: pink;" text="Logout" textFill="#282626">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="refreshbtn" layoutX="314.0" layoutY="566.0" mnemonicParsing="false" onAction="#refreshPage" text="Refresh" />
+   </children>
+</AnchorPane>

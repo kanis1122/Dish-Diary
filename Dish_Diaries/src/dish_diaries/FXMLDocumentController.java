@@ -2,6 +2,9 @@ package dish_diaries;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,25 +40,35 @@ public class FXMLDocumentController implements Initializable {
         String userId = userid1.getText();
         String password = password1.getText();
 
-        if (!userId.isEmpty() && !password.isEmpty()) {
+        if (userId.isEmpty() || password.isEmpty()) {
+            msglabel.setText("Please enter User ID and Password.");
+        } else {
             if (validateLogin(userId, password)) {
-                msglabel.setText("Login Successful!");
                 loadDashboard();
             } else {
-                msglabel.setText("Invalid credentials, try again.");
+                msglabel.setText("Invalid User ID or Password.");
             }
-        } else {
-            msglabel.setText("Please fill in both User ID and Password fields.");
         }
     }
 
     private boolean validateLogin(String userId, String password) {
-        return userId.equals("admin") && password.equals("1234");
+        try (Connection connection = DatabaseConnection.getConnection()) {
+            String query = "SELECT * FROM reg WHERE userid = ? AND pass = ?";
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setString(1, userId);
+            pst.setString(2, password);
+            ResultSet rs = pst.executeQuery();
+            return rs.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+            msglabel.setText("Database connection failed.");
+            return false;
+        }
     }
 
     private void loadDashboard() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("dashboarddd.fxml"));
             Stage stage = (Stage) btn1.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Dashboard");
@@ -66,6 +79,7 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    
     @FXML
     private void link(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Regform.fxml"));
